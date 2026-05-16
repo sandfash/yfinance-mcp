@@ -1,4 +1,3 @@
-import os
 import sys
 
 # 动态捕获底层框架实例
@@ -12,9 +11,6 @@ except ImportError:
         sys.exit(1)
 
 if __name__ == "__main__":
-    # 强制劫持云平台的动态端口
-    port = int(os.environ.get("PORT", 8000))
-    print(f"🚀 正在点火专属金融云节点，绑定端口：{port}")
-    
-    # 强制启用 SSE 协议向外广播
-    mcp.run(transport="sse", host="0.0.0.0", port=port)
+    print("🚀 正在点火专属金融云节点，移交端口控制权给云平台...")
+    # 框架底层已自动接管 0.0.0.0 和环境变量 PORT，只需直接下达 sse 唤醒指令
+    mcp.run(transport="sse")
